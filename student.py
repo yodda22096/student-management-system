@@ -20,8 +20,9 @@ def remove_student(student_id):
         return "Student removed successfully"
     return "Student not found"
 def search_student(student_id):
-    """Intentionally broken search function to test CI failure"""
-    return "Broken Bug Logic"
+    """Searches for a student by their ID (Fixed)."""
+    clean_id = str(student_id).strip()
+    return students_db.get(clean_id, "Student not found")
 def update_student(student_id, name=None, age=None, grade=None, email=None, department=None, city=None, phone=None):
     """Updates an existing student's information explicitly by matching parameters."""
     if student_id in students_db:
